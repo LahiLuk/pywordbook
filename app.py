@@ -1,10 +1,15 @@
-from flask import Flask
+from flask import Flask, render_template
+
 app = Flask(__name__)
 
-@app.route('/')
-def hello_wordbook():
-    return "Hello wordbook!"
+words = ["Pura", "Na", "Krovu", "Ikce", "Pikce"]
 
-@app.route('/goc')
-def hello_goc():
-    return "Hello Goc!"
+@app.route('/')
+def main():
+    message = 'iso medo u ducan'
+    return render_template('index.html', message=message, words=words)
+
+
+@app.route('/login')
+def login():
+    return ""
