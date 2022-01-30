@@ -93,4 +93,3 @@ TABLESPACE pg_default;
 
 ALTER TABLE pywordbook.settings
     OWNER to postgres;
-
