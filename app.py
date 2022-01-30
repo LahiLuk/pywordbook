@@ -1,9 +1,10 @@
 from flask import Flask, render_template, redirect, url_for, request
-
+from database import get_password
 
 app = Flask(__name__)
 
 words = ["Pura", "Na", "Krovu", "Ikce", "Pikce"]
+
 
 @app.route('/')
 def home():
@@ -15,7 +16,9 @@ def home():
 def login():
     error = None
     if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+        email = request.form['email']
+        password = request.form['password']
+        if password != get_password(email):
             error = 'Invalid Credentials. Please try again.'
         else:
             return redirect(url_for('home'))
